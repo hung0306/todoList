@@ -11,6 +11,11 @@ function ListTodo() {
     const handleSubmit =(e)=>{
         e.preventDefault()
         let content = e.target[0].value
+        
+        
+        if(content == ""){
+            alert("Mày bị ngu à nhập vào đi")
+        }
         dispatch(Create(content));
         inputRef.current.value = "";
         inputRef.current.focus();
