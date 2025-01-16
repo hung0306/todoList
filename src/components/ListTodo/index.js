@@ -15,10 +15,12 @@ function ListTodo() {
         
         if(content == ""){
             alert("Mày bị ngu à nhập vào đi")
+        }else{
+            dispatch(Create(content));
+            inputRef.current.value = "";
+            inputRef.current.focus();
         }
-        dispatch(Create(content));
-        inputRef.current.value = "";
-        inputRef.current.focus();
+       
 
 
         
