@@ -8,61 +8,61 @@ function ListTodo() {
     const dispatch = useDispatch();
     const inputRef = useRef()
 
-    const handleSubmit =(e)=>{
+    const handleSubmit = (e) => {
         e.preventDefault()
         let content = e.target[0].value
-        
-        
-        if(content == ""){
-            alert("Mày bị ngu à nhập vào đi")
-        }else{
+
+
+        if (content == "") {
+            alert("Vui lòng nhập nội dung")
+        } else {
             dispatch(Create(content));
             inputRef.current.value = "";
             inputRef.current.focus();
         }
-       
 
 
-        
-            
+
+
+
     }
 
-    const handleDelete = (id)=>{
+    const handleDelete = (id) => {
         dispatch(Delete(id))
     }
 
-   
 
-    const handleCompelete = (id)=>{
-        
+
+    const handleCompelete = (id) => {
+
         dispatch(Compelete(id))
 
     }
 
-    const handleUndo = (id)=>{
+    const handleUndo = (id) => {
         dispatch(Undo(id))
     }
-    
-    
+
+
     return (
         <>
             <div className="todo">
                 <form className="todo__form" onSubmit={handleSubmit}>
                     <div className="todo__add"> <input placeholder="Nội dung......" ref={inputRef} name="namejob" />
                         <button className="todo__button--add">+</button></div>
-                
+
                 </form>
-                {todoList.map((item, index)=>(
+                {todoList.map((item, index) => (
 
                     <div className={item.Compelete ? "todo__item done" : "todo__item"} key={index}>
-                        <span>{item.content}</span>
-                        <div>{item.Compelete ? (<button onClick={()=>(handleUndo(item.id))}>U</button>) : (<button onClick={()=>(handleCompelete(item.id))}>V</button>)}
-                        <button onClick={()=>handleDelete(item.id)}>X</button>
- </div>
-                        
+                        <button>Edit</button><span>{item.content}</span>
+                        <div>{item.Compelete ? (<button onClick={() => (handleUndo(item.id))}>U</button>) : (<button onClick={() => (handleCompelete(item.id))}>V</button>)}
+                            <button onClick={() => handleDelete(item.id)}>X</button>
+                        </div>
+
                     </div>
                 )
-                    
+
                 )}
 
 
