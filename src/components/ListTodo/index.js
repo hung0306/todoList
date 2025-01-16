@@ -55,7 +55,7 @@ function ListTodo() {
                 {todoList.map((item, index) => (
 
                     <div className={item.Compelete ? "todo__item done" : "todo__item"} key={index}>
-                        <button>Edit</button><span>{item.content}</span>
+                       <span>{item.content}</span>
                         <div>{item.Compelete ? (<button onClick={() => (handleUndo(item.id))}>U</button>) : (<button onClick={() => (handleCompelete(item.id))}>V</button>)}
                             <button onClick={() => handleDelete(item.id)}>X</button>
                         </div>
